@@ -102,8 +102,8 @@ data.drop(columns=['location'], inplace=True)
 data.drop(columns=['city'], inplace=True)
 
 data = remove_outliers(data)
-print(data.describe().round(5))
-print(data.head(10))
+#print(data.describe().round(5))
+#print(data.head(10))
 # -------------------------------------------------------------
 X = data.drop(columns=["price_euro"])
 y = data["price_euro"]
@@ -139,19 +139,15 @@ tolerance = 0.2  # 10%
 
 within_10_percent_knn = ((y_pred_knn >= (1 - tolerance) * y_test) &
                          (y_pred_knn <= (1 + tolerance) * y_test)).mean()
-print("Доля предсказаний KNN в пределах ±10%:", within_10_percent_knn)
+print("Доля предсказаний KNN в пределах +-10%:", within_10_percent_knn)
 
 within_10_percent_lr = ((y_pred_lr >= (1 - tolerance) * y_test) &
                         (y_pred_lr <= (1 + tolerance) * y_test)).mean()
-print("Доля предсказаний LR в пределах ±10%:", within_10_percent_lr)
+print("Доля предсказаний LR в пределах +-10%:", within_10_percent_lr)
 
 within_10_percent_rf = ((y_pred_rf >= (1 - tolerance) * y_test) &
                         (y_pred_rf <= (1 + tolerance) * y_test)).mean()
-print("Доля предсказаний RF в пределах ±10%:", within_10_percent_rf)
-
-
-# print(data.describe())
-# 50%      28.561258    77.199554      3.000000      1.000000           0.0        150.000000     3.600000e+04     2.000000   254.700000  2140.200000      5.877920     1.0     3.000000            385.200000
+print("Доля предсказаний RF в пределах +-10%:", within_10_percent_rf)
 
 
 def predict_priceKNN(latitude, longitude, numBathrooms, numBalconies, isNegotiable, verificationDate,
@@ -229,6 +225,7 @@ rooms_num 3-4
 SecurityDeposit_euro 0-10829
 """
 
+#for user:
 latitude = 28.45732
 longitude = 77.13890
 numBathrooms = 2
