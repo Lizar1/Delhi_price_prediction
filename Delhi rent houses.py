@@ -108,11 +108,9 @@ print(data.head(10))
 X = data.drop(columns=["price_euro"])
 y = data["price_euro"]
 
-# Масштабируем признаки (важно для KNN)
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# Разделение на train/test
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
 
 # KNN
@@ -136,7 +134,7 @@ y_pred_rf = rf.predict(X_test)
 rmse_rf = mean_squared_error(y_test, y_pred_rf) ** 0.5
 print("Random Forest RMSE:", rmse_rf)
 
-# Доля предсказаний в пределах ±10%
+# -----------------------------------µ
 tolerance = 0.2  # 10%
 
 within_10_percent_knn = ((y_pred_knn >= (1 - tolerance) * y_test) &
@@ -231,6 +229,24 @@ rooms_num 3-4
 SecurityDeposit_euro 0-10829
 """
 
-print("KNN prediction:", round(predict_priceKNN(28.72354, 77.22882, 1, 0, 1, 0, 0, 120, 1, 2, 0), 2))
-print("LR prediction:", round(predict_priceLR(28.72354, 77.22882, 1, 0, 1, 0, 0, 120, 1, 2, 0), 2))
-print("RF prediction:", round(predict_priceRF(28.72354, 77.22882, 1, 0, 1, 0, 0, 120, 1, 2, 0), 2))
+latitude = 28.45732
+longitude = 77.13890
+numBathrooms = 2
+numBalconies = 2
+isNegotiable = 0
+verificationDate = 20
+Status = 1
+Size_m2 = 120
+BHK = 1
+rooms_num = 3
+SecurityDeposit_euro = 0
+
+print("KNN prediction:", round(
+    predict_priceKNN(latitude, longitude, numBathrooms, numBalconies, isNegotiable, verificationDate, Status, Size_m2,
+                     BHK, rooms_num, SecurityDeposit_euro), 2))
+print("LR prediction:", round(
+    predict_priceLR(latitude, longitude, numBathrooms, numBalconies, isNegotiable, verificationDate, Status, Size_m2,
+                    BHK, rooms_num, SecurityDeposit_euro), 2))
+print("RF prediction:", round(
+    predict_priceRF(latitude, longitude, numBathrooms, numBalconies, isNegotiable, verificationDate, Status, Size_m2,
+                    BHK, rooms_num, SecurityDeposit_euro), 2))
