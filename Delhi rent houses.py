@@ -217,7 +217,7 @@ def predict_priceRF(latitude, longitude, numBathrooms, numBalconies, isNegotiabl
     return price[0]
 
 
-"""
+""" first number is 25th percentile among ~4000 houses, the second number is 75th percentile among ~4000 houses
 latitude 28.45732-28.60338
 longitude 77.13890-77.22882
 numBathrooms 2-4
