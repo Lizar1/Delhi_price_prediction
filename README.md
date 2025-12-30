@@ -3,6 +3,7 @@ Delhi House Rent Predictor
 Hello, this program is constructed with Machine Learning, which helps to find out the approximate honest price of house rent in Delhi (India) 
 based on several parameters: from the coordinates of the house to the number of balconies.
 
+---------------------
 
 Step 1: Set Up (One-time only)
 To run this, you need Python installed on your computer.
@@ -16,6 +17,8 @@ pip install numpy
 pip install pandas
 and so on, untill all the libraries ("import" lines in the code) will be downloaded.
 
+---------------------
+
 Step 2: Pick a Location
 You can test specific neighborhoods using Google Maps:
 
@@ -24,6 +27,8 @@ Go to Google Maps and search for "Delhi".
 Right-click on any street or building.
 
 Click on the numbers (e.g., 28.527, 77.218). This copies the Latitude and Longitude.
+
+---------------------
 
 Step 3: Enter Your Data
 In the script, look for the section marked #for user:. Change the numbers to whatever you like:
@@ -52,8 +57,12 @@ rooms_num	Total number of rooms	3 to 4
 
 SecurityDeposit_euro	Upfront refundable deposit in Euros	0 to 10,829 €
 
+---------------------
+
 Step 4: Run the Script
 Press the Run/Play button in your editor, and get the price
+
+---------------------
 
 Step 5: Reading the Results
 The program will print several lines. Look at the very last one: RF prediction: XXX.XX
