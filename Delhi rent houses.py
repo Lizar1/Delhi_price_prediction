@@ -1,3 +1,30 @@
+""" first number is 25th percentile among ~4000 houses, the second number is 75th percentile among ~4000 houses
+latitude 28.45732-28.60338
+longitude 77.13890-77.22882
+numBathrooms 2-4
+numBalconies 0-2
+isNegotiable 0
+verificationDate 20-365
+Status 1-2
+Size_m2 120-548
+BHK 1-1
+rooms_num 3-4
+SecurityDeposit_euro 0-10829
+"""
+
+#for user:
+latitude = 28.45732
+longitude = 77.13890
+numBathrooms = 2
+numBalconies = 2
+isNegotiable = 0
+verificationDate = 20
+Status = 1
+Size_m2 = 120
+BHK = 1
+rooms_num = 3
+SecurityDeposit_euro = 0
+
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
@@ -53,7 +80,7 @@ pd.set_option('display.max_colwidth', None)
 pd.set_option('display.width', 1000)
 pd.set_option('display.max_rows', None)
 
-data = pd.read_csv('/Users/luchzarsutulov/Downloads/Indian_housing_Delhi_data.csv')
+data = pd.read_csv('https://raw.githubusercontent.com/Lizar1/Delhi_price_prediction/refs/heads/main/Indian_housing_Delhi_data.csv')
 
 data['Size_split'] = data['house_size'].str.split().str[0]
 data['Size_split'] = data['Size_split'].str.replace(',', '', regex=False).astype(int)
@@ -135,19 +162,19 @@ rmse_rf = mean_squared_error(y_test, y_pred_rf) ** 0.5
 print("Random Forest RMSE:", rmse_rf)
 
 # -----------------------------------µ
-tolerance = 0.2  # 10%
+tolerance = 0.2
 
-within_10_percent_knn = ((y_pred_knn >= (1 - tolerance) * y_test) &
+within_20_percent_knn = ((y_pred_knn >= (1 - tolerance) * y_test) &
                          (y_pred_knn <= (1 + tolerance) * y_test)).mean()
-print("Доля предсказаний KNN в пределах +-10%:", within_10_percent_knn)
+print("Доля предсказаний KNN в пределах +-20%:", within_20_percent_knn)
 
-within_10_percent_lr = ((y_pred_lr >= (1 - tolerance) * y_test) &
+within_20_percent_lr = ((y_pred_lr >= (1 - tolerance) * y_test) &
                         (y_pred_lr <= (1 + tolerance) * y_test)).mean()
-print("Доля предсказаний LR в пределах +-10%:", within_10_percent_lr)
+print("Доля предсказаний LR в пределах +-20%:", within_20_percent_lr)
 
-within_10_percent_rf = ((y_pred_rf >= (1 - tolerance) * y_test) &
+within_20_percent_rf = ((y_pred_rf >= (1 - tolerance) * y_test) &
                         (y_pred_rf <= (1 + tolerance) * y_test)).mean()
-print("Доля предсказаний RF в пределах +-10%:", within_10_percent_rf)
+print("Доля предсказаний RF в пределах +-20%:", within_20_percent_rf)
 
 
 def predict_priceKNN(latitude, longitude, numBathrooms, numBalconies, isNegotiable, verificationDate,
@@ -209,34 +236,6 @@ def predict_priceRF(latitude, longitude, numBathrooms, numBalconies, isNegotiabl
     X_new_scaled = scaler.transform(X_new)
     price = rf.predict(X_new_scaled)
     return price[0]
-
-
-""" first number is 25th percentile among ~4000 houses, the second number is 75th percentile among ~4000 houses
-latitude 28.45732-28.60338
-longitude 77.13890-77.22882
-numBathrooms 2-4
-numBalconies 0-2
-isNegotiable 0
-verificationDate 20-365
-Status 1-2
-Size_m2 120-548
-BHK 1-1
-rooms_num 3-4
-SecurityDeposit_euro 0-10829
-"""
-
-#for user:
-latitude = 28.45732
-longitude = 77.13890
-numBathrooms = 2
-numBalconies = 2
-isNegotiable = 0
-verificationDate = 20
-Status = 1
-Size_m2 = 120
-BHK = 1
-rooms_num = 3
-SecurityDeposit_euro = 0
 
 print("KNN prediction:", round(
     predict_priceKNN(latitude, longitude, numBathrooms, numBalconies, isNegotiable, verificationDate, Status, Size_m2,
