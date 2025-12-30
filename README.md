@@ -29,16 +29,27 @@ Step 3: Enter Your Data
 In the script, look for the section marked #for user:. Change the numbers to whatever you like:
 
 Variable	Description	Common Range (25th-75th Percentile)
+
 latitude	South/North coordinate (from Google Maps)	28.457 to 28.603
+
 longitude	West/East coordinate (from Google Maps)	77.138 to 77.228
+
 numBathrooms	Number of bathrooms	2 to 4
+
 numBalconies	Number of balconies	0 to 2
+
 isNegotiable	Can you haggle? (0 = No, 1 = Yes)	0 (mostly non-negotiable)
+
 verificationDate	Days since the ad was verified	20 to 365 days
+
 Status 0 is unfurnished, 1 is semi-furnished, 2 is fully furnished	1 to 2
+
 Size_m2	Total area of the real estate in square meters	120 to 548 m²
+
 BHK	0 = Room/Kitchen, 1 = Bedroom/Hall/Kitchen	Usually 1
+
 rooms_num	Total number of rooms	3 to 4
+
 SecurityDeposit_euro	Upfront refundable deposit in Euros	0 to 10,829 €
 
 Step 4: Run the Script
