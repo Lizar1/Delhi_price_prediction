@@ -8,7 +8,7 @@ based on several parameters: from the coordinates of the house to the number of 
 Step 1: Set Up (One-time only)
 To run this, you need Python installed on your computer.
 
-Open your code editor, it might be almost whatever (Pycharm, Visual Studio...), the most important in internet connection
+Open your code editor, it might be almost whatever (Pycharm, Visual Studio...), the most important is internet connection
 
 Create a new file in your editor, name it predict.py and paste my code into it.
 
